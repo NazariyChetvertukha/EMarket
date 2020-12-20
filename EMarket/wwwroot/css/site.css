@@ -754,6 +754,15 @@ header{
     margin-top: 4rem;
 }
 
+.girl {
+    width: 400px;
+    z-index: -10;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    object-fit: contain
+}
+
 .cloud {
     position: absolute;
     width: 60px;
@@ -1154,7 +1163,9 @@ header{
         flex-direction: column;
     }
         
-        
+        .girl {
+            display: none;
+        }
 
     .cart-image {
         margin: 0;

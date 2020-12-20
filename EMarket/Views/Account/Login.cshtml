@@ -2,6 +2,7 @@
 @model LoginModel
 
 <div class="products-container">
+    <img class="girl" src="/images/girl.svg" />
     <div class="login-wrapper">
         <div class="login-form">
             <h2>Login</h2>
@@ -13,10 +14,10 @@
                 @Html.TextBoxFor(m => m.Email, new {type = "email"})<br/>
                 @Html.LabelFor(m => m.Password, "Enter password")<br/>
                 @Html.TextBoxFor(m => m.Password, new {type = "password"})<br/>
-                @Html.DropDownList("role", new SelectList(Enum.GetValues<Role>()), new { name="role"})
-                <br />
+                @Html.DropDownList("role", new SelectList(Enum.GetValues<Role>()), new {name = "role"})
+                <br/>
                 <div class="form-group">
-                    <input class="edit-save" type="submit" value="Sign in" class="btn btn-outline-dark" />
+                    <input class="edit-save" type="submit" value="Sign in" class="btn btn-outline-dark"/>
                 </div>
             }
         </div>
