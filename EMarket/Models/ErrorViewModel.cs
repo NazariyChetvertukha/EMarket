@@ -1,6 +1,6 @@
 using System;
 
-namespace EMarket.Models
+namespace WebApp.Models
 {
     public class ErrorViewModel
     {

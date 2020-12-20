@@ -1,16 +1,16 @@
-﻿using EMarket.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using EMarket.Services;
-using EMarket.ViewModels;
-using AppContext = EMarket.Models.AppContext;
+using WebApp.ViewModels;
+using WebApp.Models;
+using WebApp.Services;
+using AppContext = WebApp.Models.AppContext;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
 
     public class HomeController : Controller

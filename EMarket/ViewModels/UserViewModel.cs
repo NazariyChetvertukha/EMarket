@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using EMarket.Models;
+using WebApp.Models;
 
-namespace EMarket.ViewModels
+namespace WebApp.ViewModels
 {
     public class UserViewModel
     {

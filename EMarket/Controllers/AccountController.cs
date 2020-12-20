@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using EMarket.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using AppContext = EMarket.Models.AppContext;
+using WebApp.Models;
+using AppContext = WebApp.Models.AppContext;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
     public enum Role
     {
@@ -36,7 +36,7 @@ namespace EMarket.Controllers
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             var claims = result.Principal?.Identities.FirstOrDefault()?.Claims
                 .ToDictionary(k => k.Type, v => v.Value);
-            await using (var db = new AppContext())
+            await using (var db = new Models.AppContext())
             {
                 Buyer user = await db.Buyers
                     .FirstOrDefaultAsync(p => p.Email == claims[ClaimTypes.Email]);
@@ -68,7 +68,7 @@ namespace EMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                await using AppContext db = new AppContext();
+                await using Models.AppContext db = new Models.AppContext();
                 if (role == Role.Buyer)
                 {
                     Buyer user = await db.Buyers.FirstOrDefaultAsync(u => u.Email == model.Email 
@@ -112,7 +112,7 @@ namespace EMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                await using AppContext db = new AppContext();
+                await using Models.AppContext db = new Models.AppContext();
                 Buyer user = await db.Buyers.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {
@@ -139,7 +139,7 @@ namespace EMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                await using AppContext db = new AppContext();
+                await using Models.AppContext db = new Models.AppContext();
                 Buyer user = await db.Buyers.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {

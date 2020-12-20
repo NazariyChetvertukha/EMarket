@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using EMarket.Models;
+using WebApp.Models;
 
-namespace EMarket.Services
+namespace WebApp.Services
 {
     public class SearchService : ISearchService
     {

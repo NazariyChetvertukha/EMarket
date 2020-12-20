@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using EMarket.Models;
-using EMarket.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using AppContext = EMarket.Models.AppContext;
+using WebApp.Models;
+using WebApp.Services;
+using AppContext = WebApp.Models.AppContext;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
     public class SellerController : Controller
     {
@@ -23,7 +23,7 @@ namespace EMarket.Controllers
             if (!User.IsInRole("Seller"))
                 return RedirectToAction("RegisterAsSeller", "Account");
 
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             string email = User.FindFirst(u
                 => u.Type == ClaimTypes.Email)!.Value;
             var orders = db.Orders.Include(s => s.Seller)
@@ -48,7 +48,7 @@ namespace EMarket.Controllers
         public async Task<IActionResult> AddProduct(Product product)
         {
             string email = User.FindFirst(u => u.Type == ClaimTypes.Email)?.Value;
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             Seller seller = await db.Sellers.FirstOrDefaultAsync(s => s.Email == email);
             product.SellerId = seller.Id;
 
@@ -75,7 +75,7 @@ namespace EMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                await using AppContext db = new AppContext();
+                await using Models.AppContext db = new Models.AppContext();
                 string email = User?.FindFirst(u => u.Type == ClaimTypes.Email)?.Value;
                 var user = await db.Sellers.FirstOrDefaultAsync(p =>
                     p.Email == email);
@@ -104,7 +104,7 @@ namespace EMarket.Controllers
         [HttpGet]
         public async Task<IActionResult> EditProduct(int id)
         {
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             string email = User.FindFirst(u => u.Type == ClaimTypes.Email).Value;
             Product? product = db.Products.Include(p => p.Seller).AsEnumerable()
                 .FirstOrDefault(p => p.Id == id && p.Seller.Email == email);
@@ -116,7 +116,7 @@ namespace EMarket.Controllers
         [HttpPost]
         public async Task<IActionResult> EditProduct(Product product)
         {
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             string email = User?.FindFirst(u => u.Type == ClaimTypes.Email)?.Value;
             var productToEdit = await db.Products.FirstOrDefaultAsync(p => p.Id == product.Id);
             productToEdit.Count = product.Count;
@@ -130,7 +130,7 @@ namespace EMarket.Controllers
 
         public async Task<IActionResult> Products()
         {
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             string email = User?.FindFirst(u => u.Type == ClaimTypes.Email)?.Value;
             var products = db.Products.Include(p => p.Seller)
                 .Where(p => p.Seller.Email == email).ToList();

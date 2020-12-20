@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using EMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
     public class BuyerController : Controller
     {

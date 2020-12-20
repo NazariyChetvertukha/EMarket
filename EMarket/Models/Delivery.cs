@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EMarket.Models
+namespace WebApp.Models
 {
     public class Delivery
     {

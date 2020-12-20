@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using EMarket.Services;
+using WebApp.Services;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
     public class MapController : Controller
     {

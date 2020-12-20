@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using EMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
-using AppContext = EMarket.Models.AppContext;
+using WebApp.Models;
+using AppContext = WebApp.Models.AppContext;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
     public class OrderController : Controller
     {
@@ -21,7 +21,7 @@ namespace EMarket.Controllers
             if (cart == null || !cart.Items.Any())
                 return RedirectToAction("Index", "Home");
             Dictionary<Product, int> products = new Dictionary<Product, int>();
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             foreach (var entry in cart.Items)
             {
                 products.Add(db.Products.Include(p => p.Seller)
@@ -46,7 +46,7 @@ namespace EMarket.Controllers
             HttpContext.Session.TryGetCart(out Cart cart);
             if (cart == null || !cart.Items.Any())
                 return RedirectToAction("Index", "Home");
-            await using AppContext db = new AppContext();
+            await using Models.AppContext db = new Models.AppContext();
             var allProducts = (db.Products.AsEnumerable()
                 .Where(p => (cart.Items.Keys.Contains(p.Id) && p.Count >= cart.Items[p.Id]))).ToList();
             var orders = allProducts.GroupBy(key => key.SellerId).Select(p => new

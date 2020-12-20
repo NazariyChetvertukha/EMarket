@@ -4,11 +4,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Models;
 
-namespace EMarket.Controllers
+namespace WebApp.Controllers
 {
     public class ProductController:Controller
     {

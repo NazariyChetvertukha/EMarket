@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-namespace EMarket.Models
+namespace WebApp.Models
 {
     public class AppContext : DbContext
     {

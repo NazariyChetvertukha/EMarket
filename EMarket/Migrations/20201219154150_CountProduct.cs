@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EMarket.Migrations
+namespace WebApp.Migrations
 {
     public partial class CountProduct : Migration
     {

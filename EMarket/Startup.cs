@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using EMarket.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using WebApp.Services;
 
-namespace EMarket
+namespace WebApp
 {
     public class Startup
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EMarket.Services
+namespace WebApp.Services
 {
     public class GeolocationService : IGeolocationService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using EMarket.Models;
+using WebApp.Models;
 
-namespace EMarket.Services
+namespace WebApp.Services
 {
     public interface ISearchService
     {
