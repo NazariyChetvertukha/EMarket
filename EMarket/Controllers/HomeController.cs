@@ -18,7 +18,7 @@ namespace EMarket.Controllers
         private readonly ILogger<HomeController> _logger;
 
         ISearchService searchService = new SearchService();
-        public IActionResult Index(string query)
+        public IActionResult Index(string? query)
         {
             if (query != null)
             {

@@ -9,12 +9,10 @@
         @if (User.Identity != null || User.Claims.Any())
         {
             <div class="searchbar" data-aos="fade-right" data-aos-delay="500">
-                <form method="POST">
-                    <input type="text" name="search" autocomplete="off" required />
-                    <label for="name" class="search-label">
-                        <span class="search_label-name">Search</span>
-                    </label>
-                </form>
+                <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index", "Home")" method="get">
+                            <input class="form-control my-sm-2" type="search" name="query" placeholder="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                 <div class="cart-wrapper">
                     <div class="cart-image">
                         <img src="/icons/cart.svg" />
@@ -37,7 +35,6 @@
                         }
                     </span>
                 </div>
-
             </div>
         }
         <div class="farmers">
